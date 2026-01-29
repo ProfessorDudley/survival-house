@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkkygugjwxvk6"]
+[gd_scene load_steps=7 format=3 uid="uid://dkkygugjwxvk6"]
+
+[ext_resource type="PackedScene" uid="uid://bhh4jrkg01twl" path="res://actors/player_character.tscn" id="1_uwrxv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
 size = Vector3(10, 1, 10)
@@ -27,6 +29,8 @@ shape = SubResource("BoxShape3D_yqjtg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_lnu2h")
+
+[node name="Node3D" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lnu2h")
