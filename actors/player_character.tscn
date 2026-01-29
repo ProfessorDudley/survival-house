@@ -7,7 +7,7 @@
 radius = 0.6508789
 height = 1.3017578
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_r4hof")
 
 [node name="Camera3D" type="Camera3D" parent="."]

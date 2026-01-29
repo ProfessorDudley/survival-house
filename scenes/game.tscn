@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkkygugjwxvk6"]
+[gd_scene load_steps=8 format=3 uid="uid://dkkygugjwxvk6"]
 
 [ext_resource type="PackedScene" uid="uid://bhh4jrkg01twl" path="res://actors/player_character.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://da3g3y12u1c04" path="res://icon.svg" id="2_yqjtg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
 size = Vector3(10, 1, 10)
@@ -30,10 +31,35 @@ shape = SubResource("BoxShape3D_yqjtg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_lnu2h")
 
-[node name="Node3D" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lnu2h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.825074, 0.53824717, -0.17188013, 0, 0.30419937, 0.9526084, 0.5650246, -0.7859724, 0.250987, 0, 3, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StatusBar" type="PanelContainer" parent="HUD"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 33.0
+grow_horizontal = 2
+
+[node name="StatTracker" type="Control" parent="HUD/StatusBar"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/StatusBar/StatTracker"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 33.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/StatusBar/StatTracker/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_yqjtg")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HUD/StatusBar/StatTracker/HBoxContainer"]
+layout_mode = 2
+text = "Stat Tracker"
