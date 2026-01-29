@@ -1,6 +1,8 @@
-extends CharacterBody3D
+class_name PlayerCharacter extends CharacterBody3D
 
-@export var move_speed: float = 1000
+@export var _move_speed: float = 1000
+
+@onready var player_stats: PlayerStats = $player_stats
 
 func _process(_delta: float):
 	var _input_vector: Vector3 = Vector3.ZERO # The player's movement vector.
@@ -12,7 +14,7 @@ func _process(_delta: float):
 	if _input_vector != Vector3.ZERO:
 		_input_vector = _input_vector.normalized()
 
-	velocity.x = _input_vector.x * move_speed * _delta
-	velocity.z = _input_vector.z * move_speed * _delta
+	velocity.x = _input_vector.x * _move_speed * _delta
+	velocity.z = _input_vector.z * _move_speed * _delta
 	
 	move_and_slide()

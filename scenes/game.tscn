@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkkygugjwxvk6"]
+[gd_scene load_steps=11 format=3 uid="uid://dkkygugjwxvk6"]
 
 [ext_resource type="PackedScene" uid="uid://bhh4jrkg01twl" path="res://actors/player_character.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://da3g3y12u1c04" path="res://icon.svg" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://be62bcmooj6ae" path="res://widgets/stat_tracker.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://d2yc0iwdgaxoa" path="res://assets/sprites/food_icon.tres" id="3_iywne"]
+[ext_resource type="Texture2D" uid="uid://ckeei47tkkjub" path="res://assets/sprites/water_icon.tres" id="4_p57ef"]
+[ext_resource type="Texture2D" uid="uid://dedw6lh8kdo6d" path="res://assets/sprites/energy_icon.tres" id="5_u5sy4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
 size = Vector3(10, 1, 10)
@@ -47,19 +50,42 @@ anchor_right = 1.0
 offset_bottom = 33.0
 grow_horizontal = 2
 
-[node name="StatTracker" type="Control" parent="HUD/StatusBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/StatusBar"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/StatusBar/StatTracker"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 33.0
-
-[node name="TextureRect" type="TextureRect" parent="HUD/StatusBar/StatTracker/HBoxContainer"]
+[node name="Food" parent="HUD/StatusBar/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
 layout_mode = 2
-texture = ExtResource("2_yqjtg")
-expand_mode = 3
+player = NodePath("../../../../Player")
+stat = &"food"
 
-[node name="Label" type="Label" parent="HUD/StatusBar/StatTracker/HBoxContainer"]
+[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="0"]
+texture = ExtResource("3_iywne")
+
+[node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="1"]
+text = "Food"
+
+[node name="Water" parent="HUD/StatusBar/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
 layout_mode = 2
-text = "Stat Tracker"
+player = NodePath("../../../../Player")
+stat = &"water"
+
+[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="0"]
+texture = ExtResource("4_p57ef")
+
+[node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="1"]
+text = "Water"
+
+[node name="Energy" parent="HUD/StatusBar/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
+layout_mode = 2
+player = NodePath("../../../../Player")
+stat = &"energy"
+
+[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="0"]
+texture = ExtResource("5_u5sy4")
+
+[node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="1"]
+text = "Energy"
+
+[editable path="HUD/StatusBar/HBoxContainer/Food"]
+[editable path="HUD/StatusBar/HBoxContainer/Water"]
+[editable path="HUD/StatusBar/HBoxContainer/Energy"]

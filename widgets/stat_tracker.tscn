@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://be62bcmooj6ae"]
+
+[ext_resource type="Script" uid="uid://dggnx2lxs6daw" path="res://widgets/stat_tracker.gd" id="1_5spf7"]
+
+[node name="StatTracker" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5spf7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.5
+offset_right = 1152.0
+offset_bottom = 16.5
+grow_vertical = 2
+
+[node name="StatIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+expand_mode = 3
+
+[node name="StatValue" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Stat"

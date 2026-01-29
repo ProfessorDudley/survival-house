@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhh4jrkg01twl"]
+[gd_scene load_steps=5 format=3 uid="uid://bhh4jrkg01twl"]
 
 [ext_resource type="Texture2D" uid="uid://da3g3y12u1c04" path="res://icon.svg" id="1_d5mhq"]
 [ext_resource type="Script" uid="uid://om5p8cw38po0" path="res://actors/player_character.gd" id="1_r4hof"]
+[ext_resource type="Script" uid="uid://k1m8m4h18wm7" path="res://actors/player_stats.gd" id="3_irlf7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r4hof"]
 radius = 0.6508789
@@ -19,3 +20,9 @@ texture = ExtResource("1_d5mhq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_r4hof")
+
+[node name="player_stats" type="Node" parent="."]
+script = ExtResource("3_irlf7")
+food = 30
+water = 50
+energy = 10
