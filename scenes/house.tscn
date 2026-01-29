@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://gi3ba6ygrn1g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x8wvn"]
+size = Vector3(10, 0.2, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8wvn"]
+size = Vector3(10, 0.2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d7po0"]
+size = Vector3(0.1, 2.5, 1)
+
+[node name="House" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+
+[node name="upper_floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="upper_floor"]
+mesh = SubResource("BoxMesh_x8wvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="upper_floor"]
+shape = SubResource("BoxShape3D_x8wvn")
+
+[node name="middle_floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="middle_floor"]
+mesh = SubResource("BoxMesh_x8wvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="middle_floor"]
+shape = SubResource("BoxShape3D_x8wvn")
+
+[node name="middle_walls" type="Node" parent="middle_floor"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="middle_floor/middle_walls"]
+transform = Transform3D(1, 0, 0, 0, 1.1350733, 0, 0, 0, 10.005647, -4.9489775, 1.4875256, 0.0070199966)
+mesh = SubResource("BoxMesh_d7po0")
+
+[node name="basement_floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="basement_floor"]
+mesh = SubResource("BoxMesh_x8wvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="basement_floor"]
+shape = SubResource("BoxShape3D_x8wvn")
