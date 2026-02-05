@@ -1,10 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkkygugjwxvk6"]
+[gd_scene load_steps=8 format=3 uid="uid://dkkygugjwxvk6"]
 
-[ext_resource type="PackedScene" uid="uid://bhh4jrkg01twl" path="res://actors/player_character.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://be62bcmooj6ae" path="res://widgets/stat_tracker.tscn" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://d2yc0iwdgaxoa" path="res://assets/sprites/food_icon.tres" id="3_iywne"]
-[ext_resource type="Texture2D" uid="uid://ckeei47tkkjub" path="res://assets/sprites/water_icon.tres" id="4_p57ef"]
-[ext_resource type="Texture2D" uid="uid://dedw6lh8kdo6d" path="res://assets/sprites/energy_icon.tres" id="5_u5sy4"]
+[ext_resource type="Script" uid="uid://bkfw0jjg6jg8h" path="res://scripts/ViewController.gd" id="6_p57ef"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
 size = Vector3(10, 1, 10)
@@ -34,9 +31,6 @@ shape = SubResource("BoxShape3D_yqjtg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_lnu2h")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-_zoom_speed = 40.0
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lnu2h")
 
@@ -54,38 +48,34 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/StatusBar"]
 layout_mode = 2
 
-[node name="Food" parent="HUD/StatusBar/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
+[node name="Food" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
-player = NodePath("../../../../Player")
 stat = &"food"
-
-[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="0"]
-texture = ExtResource("3_iywne")
 
 [node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="1"]
 text = "Food"
 
-[node name="Water" parent="HUD/StatusBar/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
+[node name="Water" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
-player = NodePath("../../../../Player")
 stat = &"water"
-
-[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="0"]
-texture = ExtResource("4_p57ef")
 
 [node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="1"]
 text = "Water"
 
-[node name="Energy" parent="HUD/StatusBar/HBoxContainer" node_paths=PackedStringArray("player") instance=ExtResource("2_yqjtg")]
+[node name="Energy" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
-player = NodePath("../../../../Player")
 stat = &"energy"
-
-[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="0"]
-texture = ExtResource("5_u5sy4")
 
 [node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="1"]
 text = "Energy"
+
+[node name="PlayerView" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerView"]
+
+[node name="CameraController" type="Node" parent="PlayerView"]
+script = ExtResource("6_p57ef")
 
 [editable path="HUD/StatusBar/HBoxContainer/Food"]
 [editable path="HUD/StatusBar/HBoxContainer/Water"]
