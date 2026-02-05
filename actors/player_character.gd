@@ -7,9 +7,7 @@ class_name PlayerCharacter extends CharacterBody3D
 
 @onready var player_stats: PlayerStats = $player_stats
 
-func _process(_delta: float):
-	return
-	
+func _process(_delta: float):	
 	## Left and Right Movement
 	var _input_vector: Vector3 = Vector3.ZERO # The player's movement vector.
 	if Input.is_action_pressed(&"move_right"):
