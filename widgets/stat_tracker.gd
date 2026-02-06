@@ -4,5 +4,4 @@ extends Control
 @export var stat: StringName
 
 func _process(_delta) -> void:
-	return
-	$HBoxContainer/StatValue.text = str(player.player_stats.get(stat))
+	$HBoxContainer/StatValue.text = str(PlayerStats.get(stat))

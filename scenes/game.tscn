@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkkygugjwxvk6"]
+[gd_scene load_steps=11 format=3 uid="uid://dkkygugjwxvk6"]
 
+[ext_resource type="Texture2D" uid="uid://d3mo7bpka4baw" path="res://resources/sprites/food_sprite.tres" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://be62bcmooj6ae" path="res://widgets/stat_tracker.tscn" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://bkfw0jjg6jg8h" path="res://scripts/ViewController.gd" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://rmluvs10x4yr" path="res://resources/sprites/water_sprite.tres" id="3_p57ef"]
+[ext_resource type="Texture2D" uid="uid://dddruuxhylkyt" path="res://resources/sprites/energy_sprite.tres" id="4_u5sy4"]
+[ext_resource type="Script" uid="uid://dsxvta1kjxydu" path="res://scripts/ViewController.gd" id="6_p57ef"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
 size = Vector3(10, 1, 10)
@@ -52,6 +55,9 @@ layout_mode = 2
 layout_mode = 2
 stat = &"food"
 
+[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="0"]
+texture = ExtResource("2_iywne")
+
 [node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="1"]
 text = "Food"
 
@@ -59,12 +65,18 @@ text = "Food"
 layout_mode = 2
 stat = &"water"
 
+[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="0"]
+texture = ExtResource("3_p57ef")
+
 [node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="1"]
 text = "Water"
 
 [node name="Energy" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
 stat = &"energy"
+
+[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="0"]
+texture = ExtResource("4_u5sy4")
 
 [node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="1"]
 text = "Energy"

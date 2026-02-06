@@ -6,10 +6,6 @@
 addons/
 *.csproj.old
 
-# Anything in Assets Folder
-# Note Assets folder contents are needed for Resources like themes and spritesheets.
-assets
-
 # Ignore editor preferences
 .vscode/
 docs/

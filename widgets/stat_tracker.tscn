@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://be62bcmooj6ae"]
 
-[ext_resource type="Script" uid="uid://dggnx2lxs6daw" path="res://widgets/stat_tracker.gd" id="1_5spf7"]
+[ext_resource type="Script" uid="uid://c3axeresaj33v" path="res://widgets/stat_tracker.gd" id="1_5spf7"]
 
 [node name="StatTracker" type="Control"]
 clip_contents = true
@@ -20,6 +20,7 @@ offset_bottom = 16.5
 grow_vertical = 2
 
 [node name="StatIcon" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 expand_mode = 3
 
