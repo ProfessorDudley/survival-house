@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkkygugjwxvk6"]
+[gd_scene load_steps=12 format=3 uid="uid://dkkygugjwxvk6"]
 
 [ext_resource type="Texture2D" uid="uid://d3mo7bpka4baw" path="res://resources/sprites/food_sprite.tres" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://be62bcmooj6ae" path="res://widgets/stat_tracker.tscn" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://rmluvs10x4yr" path="res://resources/sprites/water_sprite.tres" id="3_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dddruuxhylkyt" path="res://resources/sprites/energy_sprite.tres" id="4_u5sy4"]
+[ext_resource type="Script" uid="uid://3bal63smafxu" path="res://scenes/clock.gd" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://dsxvta1kjxydu" path="res://scripts/ViewController.gd" id="6_p57ef"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
@@ -48,38 +49,68 @@ anchor_right = 1.0
 offset_bottom = 33.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/StatusBar"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/StatusBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Left" type="HBoxContainer" parent="HUD/StatusBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Food" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
+[node name="Food" parent="HUD/StatusBar/MarginContainer/Left" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
 stat = &"food"
 
-[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="0"]
+[node name="StatIcon" parent="HUD/StatusBar/MarginContainer/Left/Food/HBoxContainer" index="0"]
 texture = ExtResource("2_iywne")
 
-[node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Food/HBoxContainer" index="1"]
+[node name="StatValue" parent="HUD/StatusBar/MarginContainer/Left/Food/HBoxContainer" index="1"]
 text = "Food"
 
-[node name="Water" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
+[node name="Water" parent="HUD/StatusBar/MarginContainer/Left" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
 stat = &"water"
 
-[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="0"]
+[node name="StatIcon" parent="HUD/StatusBar/MarginContainer/Left/Water/HBoxContainer" index="0"]
 texture = ExtResource("3_p57ef")
 
-[node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Water/HBoxContainer" index="1"]
+[node name="StatValue" parent="HUD/StatusBar/MarginContainer/Left/Water/HBoxContainer" index="1"]
 text = "Water"
 
-[node name="Energy" parent="HUD/StatusBar/HBoxContainer" instance=ExtResource("2_yqjtg")]
+[node name="Energy" parent="HUD/StatusBar/MarginContainer/Left" instance=ExtResource("2_yqjtg")]
 layout_mode = 2
 stat = &"energy"
 
-[node name="StatIcon" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="0"]
+[node name="StatIcon" parent="HUD/StatusBar/MarginContainer/Left/Energy/HBoxContainer" index="0"]
 texture = ExtResource("4_u5sy4")
 
-[node name="StatValue" parent="HUD/StatusBar/HBoxContainer/Energy/HBoxContainer" index="1"]
+[node name="StatValue" parent="HUD/StatusBar/MarginContainer/Left/Energy/HBoxContainer" index="1"]
 text = "Energy"
+
+[node name="Right" type="HBoxContainer" parent="HUD/StatusBar/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Time" type="Control" parent="HUD/StatusBar/MarginContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("5_p57ef")
+
+[node name="Label" type="Label" parent="HUD/StatusBar/MarginContainer/Right/Time"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "23:23"
 
 [node name="PlayerView" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
@@ -89,6 +120,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 [node name="CameraController" type="Node" parent="PlayerView"]
 script = ExtResource("6_p57ef")
 
-[editable path="HUD/StatusBar/HBoxContainer/Food"]
-[editable path="HUD/StatusBar/HBoxContainer/Water"]
-[editable path="HUD/StatusBar/HBoxContainer/Energy"]
+[editable path="HUD/StatusBar/MarginContainer/Left/Food"]
+[editable path="HUD/StatusBar/MarginContainer/Left/Water"]
+[editable path="HUD/StatusBar/MarginContainer/Left/Energy"]
